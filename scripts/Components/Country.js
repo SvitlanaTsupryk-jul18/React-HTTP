@@ -7,7 +7,7 @@ const Country = ({ countries = [], currentCountry, selectCountry }) => (
         onChange={(event) => selectCountry(event.target.value)}
         placeholder="Select Country">
         <option value="" disabled>Select Country</option>
-        {countries.map((country) => <option key={country.id} value={country.name}>{country.name}</option>)}
+        {countries.map((country) => <option key={country.id} value={country.country_code}>{country.name}</option>)}
     </select>
 );
 

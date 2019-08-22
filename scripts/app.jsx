@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
-import { getCountries } from './api';
+import { getCountries, postUser } from './api';
 import { connect } from 'react-redux';
 import Number from './Components/Number'
 import Country from './Components/Country'
@@ -15,7 +15,7 @@ class App extends Component {
   render() {
     const { handleChange } = this.props;
     return (
-      <form className="form">
+      <form className="form" onSubmit={postUser}>
         <h2>Sigh up</h2>
         <p>Name</p>
         <input
@@ -61,7 +61,6 @@ const mapDispatch = (dispatch) => {
     handleChange: (currentInfo) => dispatch({ type: 'SET_INFO', currentInfo: currentInfo }),
   };
 };
-// export default hot(module)(App);
-// export default connect(mapState)(App);
+
 
 export default hot(module)(connect(null, mapDispatch)(App));

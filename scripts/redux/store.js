@@ -35,7 +35,10 @@ const initialState = {
     currentCode: '',
     currentCountry: '',
     currentNumber: '',
-    userName: ''
+    userName: '',
+    userEmail: '',
+    userPassword: '',
+    passwordConfirm: ''
 };
 
 const store = createStore(reducer, initialState);
