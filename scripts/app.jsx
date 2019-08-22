@@ -3,6 +3,7 @@ import { hot } from 'react-hot-loader';
 import { getCountries } from './api';
 import { connect } from 'react-redux';
 import Number from './Components/Number'
+import Country from './Components/Country'
 
 
 class App extends Component {
@@ -12,21 +13,35 @@ class App extends Component {
     setCountries(countries);
   }
   render() {
+    const { handleChange } = this.props;
     return (
       <form className="form">
         <h2>Sigh up</h2>
-        <input type="text" name="name" />
+        <p>Name</p>
+        <input
+          type="text"
+          name="userName"
+          onChange={(event) => handleChange(event.target)}
+          placeholder="Name" />
         <Number />
-
-        <input type="email" name="email" />
-        {/* <select value={this.state.selectedCountry} onChange={this.handleChange}>
-          <option value="grapefruit">Грейпфрут</option>
-          <option value="lime">Лайм</option>
-          <option value="coconut">Кокос</option>
-          <option value="mango">Манго</option>
-        </select> */}
-        <input type="password" name="password" />
-        <input type="password" name="pasconfirm" />
+        <input
+          type="email"
+          name="userEmail"
+          onChange={(event) => handleChange(event.target)}
+          placeholder="Email address" />
+        <Country />
+        <p>Password</p>
+        <input
+          type="password"
+          name="userPassword"
+          onChange={(event) => handleChange(event.target)}
+          placeholder="" />
+        <p>Password confirmation</p>
+        <input
+          type="password"
+          name="passwordConfirm"
+          onChange={(event) => handleChange(event.target)}
+          placeholder="" />
         <input type="checkbox" name="subscribe" name="subscribe" />
         <label htmlFor="subscribe">Horns</label>
         <input type="submit" value="Отправить" />
@@ -43,6 +58,7 @@ class App extends Component {
 const mapDispatch = (dispatch) => {
   return {
     setCountries: (countries) => dispatch({ type: 'SET_COUNTRIRES', countries: countries }),
+    handleChange: (currentInfo) => dispatch({ type: 'SET_INFO', currentInfo: currentInfo }),
   };
 };
 // export default hot(module)(App);

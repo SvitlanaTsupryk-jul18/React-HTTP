@@ -23,7 +23,6 @@ const mapState = (state) => {
     return {
         countries: state.countries,
         currentCode: state.currentCode,
-        currentCountry: state.currentCountry
     };
 };
 

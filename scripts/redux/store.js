@@ -14,6 +14,11 @@ const reducer = (state, action) => {
                 ...state,
                 currentCode: action.currentCode
             };
+        case 'SET_COUNTRY':
+            return {
+                ...state,
+                currentCountry: action.currentCountry
+            };
         case 'SET_INFO':
             return {
                 ...state,
@@ -29,7 +34,8 @@ const initialState = {
     countries: [],
     currentCode: '',
     currentCountry: '',
-    currentNumber: ''
+    currentNumber: '',
+    userName: ''
 };
 
 const store = createStore(reducer, initialState);
