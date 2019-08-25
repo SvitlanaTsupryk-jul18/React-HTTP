@@ -13,7 +13,7 @@ class App extends Component {
     setCountries(countries);
   }
   render() {
-    const { handleChange } = this.props;
+    const { handleChange, validationInput, warning } = this.props;
     return (
       <form className="form" onSubmit={postUser}>
         <h2>Sigh up</h2>
@@ -22,26 +22,39 @@ class App extends Component {
           type="text"
           name="userName"
           onChange={(event) => handleChange(event.target)}
-          placeholder="Name" />
+          onBlur={(event) => validationInput(event.target)}
+          placeholder="Name"
+        // required 
+        />
         <Number />
         <input
           type="email"
           name="userEmail"
           onChange={(event) => handleChange(event.target)}
-          placeholder="Email address" />
+          onBlur={(event) => validationInput(event.target)}
+          placeholder="Email address"
+        // required 
+        />
         <Country />
         <p>Password</p>
         <input
           type="password"
           name="userPassword"
           onChange={(event) => handleChange(event.target)}
-          placeholder="" />
+          onBlur={(event) => validationInput(event.target)}
+          placeholder=""
+        // required 
+        />
         <p>Password confirmation</p>
         <input
           type="password"
           name="passwordConfirm"
           onChange={(event) => handleChange(event.target)}
-          placeholder="" />
+          onBlur={(event) => validationInput(event.target)}
+          placeholder=""
+        // required 
+        />
+        <p className="warning">{warning}</p>
         <input type="checkbox" name="subscribe" name="subscribe" />
         <label htmlFor="subscribe">Horns</label>
         <input type="submit" value="Отправить" />
@@ -50,17 +63,20 @@ class App extends Component {
   }
 }
 
-// const mapState = (state) => {
-//   return {
-//     countries: state.countries,
-//   };
-// };
+const mapState = (state) => {
+  return {
+    warning: state.warning,
+  };
+};
+
 const mapDispatch = (dispatch) => {
   return {
     setCountries: (countries) => dispatch({ type: 'SET_COUNTRIRES', countries: countries }),
     handleChange: (currentInfo) => dispatch({ type: 'SET_INFO', currentInfo: currentInfo }),
+    validationInput: (currentInput) => dispatch({ type: 'VAL_INPUT', currentInput: currentInput }),
   };
+
 };
 
 
-export default hot(module)(connect(null, mapDispatch)(App));
+export default hot(module)(connect(mapState, mapDispatch)(App));
