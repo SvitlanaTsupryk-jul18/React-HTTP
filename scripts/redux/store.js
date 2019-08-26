@@ -1,5 +1,19 @@
 import { createStore } from 'redux';
-// export const SET_PRODUCTS = "SET_PRODUCTS";
+import loadingReducer from './loading';
+
+
+// const reducer = (state, action) => {
+//     countries: loadingReduser(state.countries, action);
+//     currentCode: settingReducer(state.currentCode, action);
+//     currentCountry: settingReducer(state.currentCountry, action);
+//     currentNumber: settingReducer(state.currentCode, action);
+//     userName: settingReducer(state.currentCode, action);
+//     userEmail: settingReducer(state.currentCode, action);
+//     userPassword: settingReducer(state.currentCode, action);
+//     passwordConfirm: settingReducer(state.currentCode, action);
+//     isValid: validationReducer(state.isValid, action);
+//     warning: validationReducer(state.warning, action)
+// }
 
 
 const reducer = (state, action) => {

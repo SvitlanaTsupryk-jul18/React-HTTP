@@ -4,7 +4,7 @@ import { getCountries, postUser } from './api';
 import { connect } from 'react-redux';
 import Number from './Components/Number'
 import Country from './Components/Country'
-
+import { SET_COUNTRIRES } from './redux/loading'
 
 class App extends Component {
   async componentDidMount() {
@@ -71,12 +71,20 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    setCountries: (countries) => dispatch({ type: 'SET_COUNTRIRES', countries: countries }),
+    setCountries: (countries) => dispatch({ type: SET_COUNTRIRES, countries: countries }),
     handleChange: (currentInfo) => dispatch({ type: 'SET_INFO', currentInfo: currentInfo }),
     validationInput: (currentInput) => dispatch({ type: 'VAL_INPUT', currentInput: currentInput }),
   };
 
 };
+// const mapDispatch = (dispatch) => {
+//   return {
+//     setCountries: (countries) => {
+//       const action = setCountries(countries);
+//       dispatch(action);
+//     }
+//   };
+// };
 
 
 export default hot(module)(connect(mapState, mapDispatch)(App));
