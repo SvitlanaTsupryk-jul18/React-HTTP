@@ -1,3 +1,5 @@
+[Link to form]( https://svitlanatsupryk-jul18.github.io/React-HTTP/)
+
 # Simple registration form
 
 This is a simple project which is basically a registration form. The general idea is to see your code structure, code quality, and approach in general.
