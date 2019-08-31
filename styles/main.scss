@@ -1,10 +1,53 @@
+$liteText:#9b9b9b;
+$redColor:#ed715c;
+$greenColor:#46b688;
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #454545;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    background-color: #fafbfc;
+}
+.root{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+h2{
+    font-size: 36px;
+    text-align: center;
+}
 .form {
     display: flex;
     flex-direction: column;
+    border-radius: 4px;
+    border: solid 1px #ebedf8;
+    background-color: #ffffff;
+    padding: 40px;
+    margin: auto;
+    width: 40%;
+}
+input, select{
+    font-size: 16px;
+    line-height: 1.5;
+    border: none;
+    border-bottom: 2px solid $liteText;
+    padding-bottom: 6px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+.description{
+    font-size: 12px;
+    color: $liteText;
 }
 .valid{
-    border: 1px solid green;
+    border-bottom: 2px solid greenColor;
 }
 .error{
-    border:1px solid red;
+    border-bottom:2px solid $redColor;
 }
