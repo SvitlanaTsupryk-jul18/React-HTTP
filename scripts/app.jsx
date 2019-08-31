@@ -4,7 +4,7 @@ import { getCountries, postUser } from './api';
 import { connect } from 'react-redux';
 import Number from './Components/Number'
 import Country from './Components/Country'
-import { SET_COUNTRIRES } from './redux/loading'
+import { SET_COUNTRIRES, SET_INFO, VAL_INPUT, SEND_FORM } from './redux/store'
 
 class App extends Component {
   async componentDidMount() {
@@ -17,7 +17,7 @@ class App extends Component {
     return (
       <form className="form" onSubmit={postUser}>
         <h2>Sigh up</h2>
-        <p>Name</p>
+        <p className="description">Name</p>
         <input
           type="text"
           name="userName"
@@ -36,7 +36,7 @@ class App extends Component {
         // required 
         />
         <Country />
-        <p>Password</p>
+        <p className="description">Password</p>
         <input
           type="password"
           name="userPassword"
@@ -45,7 +45,7 @@ class App extends Component {
           placeholder=""
         // required 
         />
-        <p>Password confirmation</p>
+        <p className="description">Password confirmation</p>
         <input
           type="password"
           name="passwordConfirm"
@@ -72,8 +72,9 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     setCountries: (countries) => dispatch({ type: SET_COUNTRIRES, countries: countries }),
-    handleChange: (currentInfo) => dispatch({ type: 'SET_INFO', currentInfo: currentInfo }),
-    validationInput: (currentInput) => dispatch({ type: 'VAL_INPUT', currentInput: currentInput }),
+    sendForm: () => dispatch({ type: SEND_FORM, target: event.target }),
+    handleChange: (currentInfo) => dispatch({ type: SET_INFO, currentInfo: currentInfo }),
+    validationInput: (currentInput) => dispatch({ type: VAL_INPUT, currentInput: currentInput }),
   };
 
 };

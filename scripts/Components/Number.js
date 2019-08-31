@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { SET_CODE, SET_INFO } from '.././redux/store';
 
 const Number = ({ countries = [], currentCode, selectCode, currentNumber, handleChange }) => (
     <div className="number">
@@ -28,8 +29,8 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
     return {
-        selectCode: (currentCode) => dispatch({ type: 'SET_CODE', currentCode: currentCode }),
-        handleChange: (currentInfo) => dispatch({ type: 'SET_INFO', currentInfo: currentInfo }),
+        selectCode: (currentCode) => dispatch({ type: SET_CODE, currentCode: currentCode }),
+        handleChange: (currentInfo) => dispatch({ type: SET_INFO, currentInfo: currentInfo }),
     };
 };
 

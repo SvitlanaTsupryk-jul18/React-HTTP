@@ -64,6 +64,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "custom-select": "^1.1.15",
     "es6-promise": "^4.2.5",
     "exports-loader": "^0.6.4",
     "express-validator": "^5.3.1",

@@ -1,45 +1,34 @@
 import { createStore } from 'redux';
-import loadingReducer from './loading';
-
-
-// const reducer = (state, action) => {
-//     countries: loadingReduser(state.countries, action);
-//     currentCode: settingReducer(state.currentCode, action);
-//     currentCountry: settingReducer(state.currentCountry, action);
-//     currentNumber: settingReducer(state.currentCode, action);
-//     userName: settingReducer(state.currentCode, action);
-//     userEmail: settingReducer(state.currentCode, action);
-//     userPassword: settingReducer(state.currentCode, action);
-//     passwordConfirm: settingReducer(state.currentCode, action);
-//     isValid: validationReducer(state.isValid, action);
-//     warning: validationReducer(state.warning, action)
-// }
-
+export const SET_COUNTRIRES = "SET_COUNTRIRES";
+export const SET_CODE = 'SET_CODE';
+export const SET_INFO = 'SET_INFO';
+export const VAL_INPUT = 'VAL_INPUT';
+export const SET_COUNTRY = 'SET_COUNTRY';
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case 'SET_COUNTRIRES':
+        case SET_COUNTRIRES:
             return {
                 ...state,
                 countries: action.countries,
             };
-        case 'SET_CODE':
+        case SET_CODE:
             return {
                 ...state,
                 currentCode: action.currentCode
             };
-        case 'SET_COUNTRY':
+        case SET_COUNTRY:
             return {
                 ...state,
                 currentCountry: action.currentCountry
             };
-        case 'SET_INFO':
+        case SET_INFO:
             return {
                 ...state,
                 [action.currentInfo.name]: action.currentInfo.value,
                 warning: ''
             };
-        case 'VAL_INPUT':
+        case VAL_INPUT:
             action.currentInput.classList.remove("error");
             let validReq = false;
             switch (action.currentInput.name) {
@@ -66,7 +55,6 @@ const reducer = (state, action) => {
                     break;
                 default: validReq = false;
             }
-
             if (action.currentInput.value && validReq) {
                 action.currentInput.classList.add("valid");
                 return {
@@ -100,3 +88,27 @@ export default store;
 store.subscribe(() => {
     console.log("store -", store.getState());
 });
+
+
+
+
+
+
+
+
+
+
+
+// import loadingReducer from './loading';
+// const reducer = (state, action) => {
+//     countries: loadingReduser(state.countries, action);
+//     currentCode: settingReducer(state.currentCode, action);
+//     currentCountry: settingReducer(state.currentCountry, action);
+//     currentNumber: settingReducer(state.currentCode, action);
+//     userName: settingReducer(state.currentCode, action);
+//     userEmail: settingReducer(state.currentCode, action);
+//     userPassword: settingReducer(state.currentCode, action);
+//     passwordConfirm: settingReducer(state.currentCode, action);
+//     isValid: validationReducer(state.isValid, action);
+//     warning: validationReducer(state.warning, action)
+// }
