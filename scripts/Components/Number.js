@@ -29,8 +29,8 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
     return {
-        selectCode: (currentCode) => dispatch({ type: SET_CODE, currentCode: currentCode }),
-        handleChange: (currentInfo) => dispatch({ type: SET_INFO, currentInfo: currentInfo }),
+        selectCode: (currentCode) => selectCode(handleChange(currentCode)),
+        handleChange: (currentInfo) => dispatch(handleChange(currentInfo)),
     };
 };
 
