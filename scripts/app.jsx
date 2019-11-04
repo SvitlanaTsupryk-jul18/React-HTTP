@@ -4,7 +4,7 @@ import { getCountries, postUser } from './api';
 import { connect } from 'react-redux';
 import Number from './Components/Number'
 import Country from './Components/Country'
-import { SET_COUNTRIRES, SET_INFO, VAL_INPUT, SEND_FORM } from './redux/store'
+import { setCountries, handleChange, validationInput, sendForm } from './redux/store'
 
 class App extends Component {
   async componentDidMount() {
@@ -13,9 +13,9 @@ class App extends Component {
     setCountries(countries);
   }
   render() {
-    const { handleChange, validationInput, warning, sendForm, signed } = this.props;
+    const { handleChange, validationInput, warning, sendForm, isSigned } = this.props;
     return (
-      signed ? (
+      isSigned ? (
         <div className="message">
           <h3>Great</h3>
           <p>your account has been successfully created.</p>
@@ -78,22 +78,11 @@ const mapState = (state) => {
   };
 };
 
-const mapDispatch = (dispatch) => {
-  return {
-    setCountries: (countries) => dispatch({ type: SET_COUNTRIRES, countries: countries }),
-    sendForm: () => dispatch({ type: SEND_FORM, event: event }),
-    handleChange: (currentInfo) => dispatch({ type: SET_INFO, currentInfo: currentInfo }),
-    validationInput: (currentInput) => dispatch({ type: VAL_INPUT, currentInput: currentInput }),
-  };
-};
-// const mapDispatch = (dispatch) => {
-//   return {
-//     setCountries: (countries) => {
-//       const action = setCountries(countries);
-//       dispatch(action);
-//     }
-//   };
-// };
-
+const mapDispatch = (dispatch) => ({
+  setCountries: (countries) => dispatch(setCountries(countries)),
+  handleChange: (currentInfo) => dispatch(handleChange(currentInfo)),
+  validationInput: (currentInput) => dispatch(validationInput(currentInput)),
+  sendForm: (event) => dispatch(sendForm(event)),
+});
 
 export default hot(module)(connect(mapState, mapDispatch)(App));

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { SET_CODE, SET_INFO } from '.././redux/store';
+import { selectCode, handleChange } from '.././redux/store';
 
 const Number = ({ countries = [], currentCode, selectCode, currentNumber, handleChange }) => (
     <div className="number">

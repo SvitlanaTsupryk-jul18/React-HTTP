@@ -1,11 +1,11 @@
 import { createStore, applyMiddleware } from 'redux';
-export const SET_COUNTRIRES = "SET_COUNTRIRES";
-export const SET_CODE = 'SET_CODE';
-export const SET_INFO = 'SET_INFO';
-export const VAL_INPUT = 'VAL_INPUT';
-export const SET_COUNTRY = 'SET_COUNTRY';
-export const SEND_FORM = 'SEND_FORM';
-export const SHOW_SUCCESS = 'SHOW_SUCCESS';
+const SET_COUNTRIRES = "SET_COUNTRIRES";
+const SET_CODE = 'SET_CODE';
+const SET_INFO = 'SET_INFO';
+const VAL_INPUT = 'VAL_INPUT';
+const SET_COUNTRY = 'SET_COUNTRY';
+const SEND_FORM = 'SEND_FORM';
+const SHOW_SUCCESS = 'SHOW_SUCCESS';
 import { postUser } from '../api';
 import thunk from 'redux-thunk';
 
@@ -13,34 +13,44 @@ import thunk from 'redux-thunk';
 export const setCountries = (countries) => {
     return {
         type: SET_COUNTRIRES,
-        countries
-    }
+        countries: countries,
+    };
 };
+
 export const handleChange = (currentInfo) => {
     return {
         type: SET_COUNTRIRES,
-        currentInfo
-    }
+        currentInfo: currentInfo,
+    };
 };
 export const validationInput = (currentInput) => {
     return {
         type: SET_COUNTRIRES,
-        currentInput
+        currentInput: currentInput,
     }
 };
 export const selectCountry = (currentCountry) => {
     return {
         type: SET_COUNTRIRES,
-        currentCountry
+        currentCountry: currentCountry,
     }
 };
 export const selectCode = (currentCode) => {
     return {
         type: SET_COUNTRIRES,
-        currentCode
+        currentCode: currentCode,
     }
 };
+export const showMessage = (isSigned) => {
+    return {
+        type: SHOW_SUCCESS,
+        isSigned
+    }
+};
+export const sendForm = (event) => {
+    event.preventDefault();
 
+}
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -100,19 +110,18 @@ const reducer = (state, action) => {
                 };
             } else
                 action.currentInput.classList.add("error");
-        case SEND_FORM:
-            action.event.preventDefault();
-            let user = { ...state };
-            return (dispatch) => {
-                postUser(user)
-                    .then(status => dispatch({ type: SHOW_SUCCESS }))
-            }
+        // case SEND_FORM:
+
+        //     let user = { ...state };
+        //     return (dispatch) => {
+        //         postUser(user)
+        //             .then(status => dispatch({ type: SHOW_SUCCESS }))
+        //     }
         // res.status === 'success' ? true : false)
         case SHOW_SUCCESS:
-            console.log("YHF!");
             return {
                 ...state,
-                signed: true
+                isSigned: action.isSigned
             };
 
         default:
@@ -131,7 +140,7 @@ const initialState = {
     passwordConfirm: '',
     isValid: false,
     warning: '',
-    signed: false
+    isSigned: false
 };
 
 const store = createStore(reducer, initialState, applyMiddleware(thunk));

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { SET_COUNTRY } from '.././redux/store';
+import { selectCountry } from '.././redux/store';
 import customSelect from 'custom-select';
 customSelect('select');
 

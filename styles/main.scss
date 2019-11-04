@@ -2,13 +2,15 @@ $liteText:#9b9b9b;
 $redColor:#ed715c;
 $greenColor:#46b688;
 
-body {
-    font-family: 'Open Sans', sans-serif;
-    color: #454545;
+* {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
     text-decoration: none;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #454545;
     background-color: #fafbfc;
 }
 .root{
@@ -31,6 +33,7 @@ h2{
     padding: 40px;
     margin: auto;
     width: 40%;
+    min-width: 340px;
 }
 input, select{
     font-size: 16px;
